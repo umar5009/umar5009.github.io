@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umar Muzaffar | Lead iOS Developer</title>
+<meta name="description" content="Lead iOS Developer with 8+ years of native iOS experience. Swift, SwiftUI, Swift Concurrency, ARKit, Clean Architecture. Led a Swift 6 migration that cut crashes by 99%.">
+<meta property="og:title" content="Umar Muzaffar | Lead iOS Developer">
+<meta property="og:description" content="8+ years native iOS · Swift 6 · SwiftUI · ARKit · Aviation, AR, e-commerce & healthcare apps.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c14;
+    --bg-2: #0f1220;
+    --card: #12162a;
+    --card-2: #161b33;
+    --line: rgba(255,255,255,0.08);
+    --line-2: rgba(255,255,255,0.14);
+    --text: #e8eaf2;
+    --muted: #9aa1b8;
+    --dim: #6b7290;
+    --cyan: #5ee7f7;
+    --blue: #6e8bff;
+    --violet: #a46bf5;
+    --green: #4ade80;
+    --grad: linear-gradient(90deg, var(--cyan), var(--blue) 50%, var(--violet));
+    --radius: 18px;
+    --max: 1120px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  .grad-text {
+    background: var(--grad);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+  }
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(10,12,20,0.75);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-weight: 800; letter-spacing: -0.02em; font-size: 18px; }
+  .logo span { color: var(--cyan); }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--muted); }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 999px;
+    border: 1px solid var(--line-2);
+  }
+  .nav-cta:hover { border-color: var(--cyan); color: var(--cyan); }
+
+  /* Hero */
+  .hero { position: relative; padding: 110px 0 80px; text-align: center; }
+  .hero::before {
+    content: ""; position: absolute; inset: -200px 0 auto 0; height: 700px; z-index: -1;
+    background:
+      radial-gradient(600px 300px at 30% 40%, rgba(94,231,247,0.12), transparent 70%),
+      radial-gradient(600px 300px at 70% 30%, rgba(164,107,245,0.14), transparent 70%);
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px; border-radius: 999px; font-size: 13px; color: var(--muted);
+    border: 1px solid var(--line-2); background: rgba(255,255,255,0.03); margin-bottom: 28px;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px var(--green); }
+  .hero h1 {
+    font-size: clamp(40px, 7vw, 76px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.05;
+    margin-bottom: 14px;
+  }
+  .hero .name { font-size: clamp(18px, 2.4vw, 22px); color: var(--text); font-weight: 600; margin-bottom: 18px; }
+  .hero .tags { color: var(--muted); font-size: clamp(15px, 2vw, 18px); margin-bottom: 26px; }
+  .hero .tags b { color: var(--dim); font-weight: 400; margin: 0 6px; }
+  .hero p.lead { max-width: 720px; margin: 0 auto 38px; color: #c9cde0; font-size: clamp(16px, 2vw, 19px); }
+  .btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 26px; border-radius: 999px; font-weight: 700; font-size: 16px;
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+  }
+  .btn-primary { background: var(--grad); color: #0a0c14; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(110,139,255,0.35); }
+  .btn-ghost { border: 1px solid rgba(94,231,247,0.35); color: var(--cyan); background: rgba(94,231,247,0.04); }
+  .btn-ghost:hover { border-color: var(--cyan); transform: translateY(-2px); }
+
+  /* Stats */
+  .stats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: var(--line); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; margin-top: 70px;
+  }
+  .stat { background: var(--bg-2); padding: 28px 20px; text-align: center; }
+  .stat .num { font-size: clamp(30px, 4vw, 42px); font-weight: 800; letter-spacing: -0.03em; }
+  .stat .lbl { color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+  /* Sections */
+  section { padding: 90px 0; }
+  .eyebrow { font-family: "JetBrains Mono", monospace; color: var(--cyan); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+  h2 { font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
+  .sub { color: var(--muted); max-width: 640px; font-size: 17px; margin-bottom: 48px; }
+
+  /* Case studies */
+  .case {
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 0;
+    background: var(--card); border: 1px solid var(--line); border-radius: 24px; overflow: hidden;
+    margin-bottom: 28px;
+  }
+  .case-body { padding: 40px; }
+  .case-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; color: var(--dim); font-size: 13px; margin-bottom: 14px; }
+  .case h3 { font-size: 26px; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 8px; }
+  .case .co { color: var(--cyan); font-weight: 600; font-size: 15px; margin-bottom: 18px; }
+  .case p { color: #c3c8da; margin-bottom: 18px; }
+  .case ul { list-style: none; margin-bottom: 22px; }
+  .case li { position: relative; padding-left: 22px; color: #c3c8da; margin-bottom: 10px; font-size: 15px; }
+  .case li::before { content: ""; position: absolute; left: 0; top: 10px; width: 8px; height: 8px; border-radius: 2px; background: var(--grad); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    font-size: 12.5px; padding: 5px 11px; border-radius: 999px;
+    background: rgba(255,255,255,0.04); border: 1px solid var(--line-2); color: #cfd3e3;
+  }
+  .case-visual {
+    position: relative; background: var(--bg-2); border-left: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center; padding: 40px; min-height: 360px;
+  }
+
+  /* Visual: before/after metrics */
+  .metric-panel { width: 100%; max-width: 380px; }
+  .metric-row { margin-bottom: 22px; }
+  .metric-row .top { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+  .metric-row .top b { color: var(--text); font-weight: 600; }
+  .bar { height: 10px; border-radius: 99px; background: rgba(255,255,255,0.06); overflow: hidden; }
+  .bar i { display: block; height: 100%; border-radius: 99px; }
+  .bar .before { background: #475069; }
+  .bar .after { background: var(--grad); }
+  .code {
+    margin-top: 26px; background: #0b0e19; border: 1px solid var(--line); border-radius: 12px;
+    padding: 16px 18px; font-size: 12.5px; line-height: 1.7; color: #b9bfd6; overflow-x: auto; white-space: nowrap;
+  }
+  .code .k { color: var(--violet); } .code .t { color: var(--cyan); } .code .c { color: var(--dim); } .code .f { color: #8fb3ff; }
+
+  /* Visual: AR */
+  .ar-scene { position: relative; width: 240px; height: 300px; }
+  .phone {
+    position: absolute; inset: 0; border-radius: 34px; border: 2px solid #2b3150;
+    background: linear-gradient(160deg, #1a2040, #0d1022); overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.45), inset 0 0 0 6px #0a0c14;
+  }
+  .grid-floor {
+    position: absolute; left: -60%; right: -60%; bottom: 0; height: 120%;
+    background-image:
+      linear-gradient(rgba(94,231,247,0.25) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(94,231,247,0.25) 1px, transparent 1px);
+    background-size: 26px 26px;
+    transform: perspective(260px) rotateX(58deg);
+    transform-origin: bottom;
+  }
+  .measure {
+    position: absolute; left: 22%; right: 22%; top: 46%; height: 2px; background: var(--cyan);
+    box-shadow: 0 0 12px var(--cyan);
+  }
+  .measure::before, .measure::after {
+    content: ""; position: absolute; top: -6px; width: 14px; height: 14px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--cyan);
+  }
+  .measure::before { left: -7px; } .measure::after { right: -7px; }
+  .measure-lbl {
+    position: absolute; left: 50%; top: 36%; transform: translateX(-50%);
+    background: rgba(10,12,20,0.85); border: 1px solid rgba(94,231,247,0.4); color: var(--cyan);
+    font-family: "JetBrains Mono", monospace; font-size: 13px; padding: 4px 10px; border-radius: 8px;
+  }
+  .reticle { position: absolute; left: 50%; top: 68%; width: 34px; height: 34px; transform: translate(-50%,-50%); border: 2px solid rgba(255,255,255,0.7); border-radius: 50%; }
+  .reticle::after { content: ""; position: absolute; inset: 12px; background: #fff; border-radius: 50%; }
+
+  /* Visual: portfolio grid */
+  .tiles { display: grid; grid-template-columns: repeat(5, 44px); gap: 12px; }
+  .tile { width: 44px; height: 44px; border-radius: 12px; opacity: .85; }
+
+  /* Apps */
+  .apps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .app {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px;
+    transition: transform .25s, border-color .25s;
+  }
+  .app:hover { transform: translateY(-4px); border-color: var(--line-2); }
+  .app-icon {
+    width: 60px; height: 60px; border-radius: 15px; display: grid; place-items: center;
+    font-weight: 800; font-size: 22px; color: #fff; margin-bottom: 18px;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+  }
+  .app h4 { font-size: 18px; margin-bottom: 4px; }
+  .app .kind { color: var(--muted); font-size: 14px; }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .skill-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
+  .skill-card h4 { font-size: 15px; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+  .skill-card h4 .ic { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; background: rgba(94,231,247,0.1); color: var(--cyan); font-size: 14px; }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--cyan), var(--violet), transparent); }
+  .job { position: relative; padding-bottom: 40px; }
+  .job::before {
+    content: ""; position: absolute; left: -32px; top: 6px; width: 16px; height: 16px; border-radius: 50%;
+    background: var(--bg); border: 3px solid var(--blue);
+  }
+  .job:first-child::before { border-color: var(--cyan); box-shadow: 0 0 14px var(--cyan); }
+  .job-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 20px; margin-bottom: 4px; }
+  .job h4 { font-size: 19px; }
+  .job .when { color: var(--dim); font-size: 14px; font-family: "JetBrains Mono", monospace; }
+  .job .where { color: var(--cyan); font-size: 15px; margin-bottom: 10px; }
+  .job ul { list-style: none; }
+  .job li { color: #c3c8da; font-size: 15px; padding-left: 18px; position: relative; margin-bottom: 6px; }
+  .job li::before { content: "›"; position: absolute; left: 0; color: var(--blue); font-weight: 700; }
+
+  /* Edu */
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .info-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; }
+  .info-card h4 { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cyan); margin-bottom: 18px; font-family: "JetBrains Mono", monospace; font-weight: 500; }
+  .info-item { margin-bottom: 18px; }
+  .info-item:last-child { margin-bottom: 0; }
+  .info-item b { display: block; font-size: 16px; }
+  .info-item span { color: var(--muted); font-size: 14px; }
+
+  /* Contact */
+  .contact {
+    text-align: center; background: var(--card); border: 1px solid var(--line); border-radius: 28px;
+    padding: 64px 28px; position: relative; overflow: hidden;
+  }
+  .contact::before {
+    content: ""; position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(500px 220px at 50% 0%, rgba(110,139,255,0.18), transparent 70%);
+  }
+  .contact > * { position: relative; }
+  .contact .sub { margin: 0 auto 34px; }
+  .links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 26px; }
+  .link-pill {
+    display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px;
+    border: 1px solid var(--line-2); color: #cfd3e3; font-size: 14px;
+  }
+  .link-pill:hover { border-color: var(--cyan); color: var(--cyan); }
+  .link-pill svg { width: 16px; height: 16px; fill: currentColor; }
+
+  footer { padding: 40px 0 50px; text-align: center; color: var(--dim); font-size: 13px; }
+
+
+  /* App Store links */
+  .store-label { margin-top: 26px; margin-bottom: 10px; font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+  .store-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .store-btn {
+    display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 12px; border-radius: 12px;
+    background: #fff; color: #0a0c14; transition: transform .2s, box-shadow .2s;
+  }
+  .store-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(94,231,247,.25); }
+  .store-btn svg { width: 20px; height: 20px; fill: currentColor; flex: none; }
+  .store-btn span { display: flex; flex-direction: column; line-height: 1.15; font-weight: 700; font-size: 14px; }
+  .store-btn small { font-weight: 500; font-size: 10.5px; color: #4b5168; }
+  .job .store-row { margin-top: 14px; }
+  .job .ctx { color: var(--muted); font-size: 14.5px; font-style: italic; margin-bottom: 10px; }
+  .job li { margin-bottom: 8px; }
+  .job-chips { margin-top: 12px; }
+  .job-chips .chip { font-size: 12px; padding: 4px 10px; }
+  .job .store-btn { padding: 6px 12px 6px 10px; }
+
+
+  /* Recommendation */
+  .rec {
+    position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 24px;
+    padding: 48px 48px 40px; overflow: hidden;
+  }
+  .rec::before {
+    content: "\201C"; position: absolute; top: -30px; right: 28px; font-size: 220px; line-height: 1;
+    font-weight: 800; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; opacity: .25;
+  }
+  .rec-quote p { color: #d3d7e6; font-size: 17px; line-height: 1.75; margin-bottom: 18px; position: relative; }
+  .rec-quote p:first-child { font-size: 20px; color: var(--text); font-weight: 500; }
+  .rec-quote mark { background: none; color: var(--cyan); font-weight: 600; }
+  .rec-author { display: flex; align-items: center; gap: 16px; margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+  .rec-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--grad); display: grid; place-items: center; font-weight: 800; color: #0a0c14; font-size: 20px; flex: none; }
+  .rec-author b { display: block; font-size: 17px; }
+  .rec-author span { color: var(--muted); font-size: 14px; display: block; }
+  .rec-author .rec-meta { color: var(--dim); font-size: 13px; margin-top: 2px; }
+  .rec-link { margin-left: auto; }
+  @media (max-width: 640px) {
+    .rec { padding: 30px 22px 26px; }
+    .rec-quote p { font-size: 16px; } .rec-quote p:first-child { font-size: 18px; }
+    .rec-link { margin-left: 0; }
+  }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .case { grid-template-columns: 1fr; }
+    .case-visual { border-left: 0; border-top: 1px solid var(--line); min-height: 300px; }
+    .apps { grid-template-columns: repeat(2, 1fr); }
+    .skills { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 640px) {
+    .wrap { padding: 0 16px; }
+    .hero { padding: 72px 0 56px; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .case-body, .case-visual { padding: 26px; }
+    .skills, .two { grid-template-columns: 1fr; }
+    .apps { gap: 14px; }
+    .app { padding: 20px; }
+    section { padding: 64px 0; }
+    .btn { width: 100%; justify-content: center; }
+    .tiles { grid-template-columns: repeat(5, 36px); gap: 10px; }
+    .tile { width: 36px; height: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo">umar<span>.</span>swift</a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#apps">Apps</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#recommendation">Recommendation</a>
+    </div>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="badge"><span class="dot"></span> Open to relocation &amp; remote roles</div>
+    <h1 class="grad-text">Lead iOS Developer</h1>
+    <div class="name">Umar Muzaffar</div>
+    <div class="tags">8+ Years Native iOS<b>•</b>Swift 6<b>•</b>SwiftUI<b>•</b>Swift Concurrency<b>•</b>ARKit<b>•</b>Clean Architecture</div>
+    <p class="lead">
+      I build and ship high-performance App Store products, from architecture and real-time data flows to
+      release pipelines and production support. My work spans aviation, augmented reality, e-commerce and
+      healthcare, and I use AI-assisted tools daily to ship faster without lowering code quality.
+    </p>
+    <div class="btns">
+      <a href="#work" class="btn btn-primary">View Production Work</a>
+      <a href="#contact" class="btn btn-ghost">Contact Me</a>
+    </div>
+
+    <div class="stats reveal">
+      <div class="stat"><div class="num grad-text">99%</div><div class="lbl">Fewer crashes after Swift 6 migration</div></div>
+      <div class="stat"><div class="num grad-text">3.4 → 4.7</div><div class="lbl">App Store rating lift</div></div>
+      <div class="stat"><div class="num grad-text">~5,000</div><div class="lbl">New active pilot users</div></div>
+      <div class="stat"><div class="num grad-text">100+</div><div class="lbl">iOS products managed</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- WORK -->
+<section id="work">
+  <div class="wrap">
+    <div class="eyebrow">// Production work</div>
+    <h2>Selected case studies</h2>
+    <p class="sub">Real products, real users. Here is what I owned, how I approached it, and what changed as a result.</p>
+
+    <!-- FL3XX -->
+    <article class="case reveal">
+      <div class="case-body">
+        <div class="case-meta"><span>Aviation</span><span>•</span><span>May 2022 – Oct 2025</span><span>•</span><span>Remote, Vienna</span></div>
+        <h3>Swift 6 migration across four live aviation apps</h3>
+        <div class="co">FL3XX GmbH · iOS Developer</div>
+        <p>FL3XX builds operations software used by business-aviation pilots and crew. Its four App Store apps ran on a legacy codebase built around DispatchGroup and callback-based networking.</p>
+        <ul>
+          <li>Migrated the codebase to Swift 6 and structured concurrency (async/await, TaskGroup, actors), <b>cutting the crash rate by 99%</b>.</li>
+          <li>Lifted the App Store rating from <b>3.4 to 4.7</b> and grew active pilot users by <b>~5,000</b>.</li>
+          <li>Owned weekly releases, hotfixes, PR reviews and release-candidate merges across four concurrent products.</li>
+          <li>Applied OWASP Mobile security standards to meet enterprise aviation customers' requirements.</li>
+          <li>Built real-time features with WebSockets, Realm, Combine and RxSwift. Named Employee of the Month three times.</li>
+        </ul>
+        <div class="chips">
+          <span class="chip">Swift 6</span><span class="chip">async/await</span><span class="chip">Actors</span><span class="chip">SwiftUI</span><span class="chip">WebSockets</span><span class="chip">Realm</span><span class="chip">Combine</span><span class="chip">OWASP</span>
+        </div>
+        <div class="store-label">Live on the App Store</div>
+        <div class="store-row"><a class="store-btn" href="https://apps.apple.com/app/id1294440991" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.4-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.9-.91.04-2.01.61-2.66 1.37-.58.67-1.1 1.76-.96 2.8 1.01.08 2.05-.52 2.68-1.27z"/></svg><span><small>App Store</small>FL3XX Crew</span></a><a class="store-btn" href="https://apps.apple.com/app/id1448298657" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.4-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.9-.91.04-2.01.61-2.66 1.37-.58.67-1.1 1.76-.96 2.8 1.01.08 2.05-.52 2.68-1.27z"/></svg><span><small>App Store</small>FL3XX Dispatch</span></a><a class="store-btn" href="https://apps.apple.com/app/id1261787786" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.4-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.9-.91.04-2.01.61-2.66 1.37-.58.67-1.1 1.76-.96 2.8 1.01.08 2.05-.52 2.68-1.27z"/></svg><span><small>App Store</small>FL3XX Owner</span></a><a class="store-btn" href="https://apps.apple.com/app/id492516229" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.4-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.9-.91.04-2.01.61-2.66 1.37-.58.67-1.1 1.76-.96 2.8 1.01.08 2.05-.52 2.68-1.27z"/></svg><span><small>App Store</small>FL3XX Sales</span></a></div>
+      </div>
+      <div class="case-visual">
+        <div class="metric-panel">
+          <div class="metric-row">
+            <div class="top"><span>Crash rate</span><b>−99%</b></div>
+            <div class="bar" style="margin-bottom:6px"><i class="before" style="width:100%"></i></div>
+            <div class="bar"><i class="after" style="width:2%"></i></div>
+          </div>
+          <div class="metric-row">
+            <div class="top"><span>App Store rating</span><b>3.4 → 4.7</b></div>
+            <div class="bar" style="margin-bottom:6px"><i class="before" style="width:68%"></i></div>
+            <div class="bar"><i class="after" style="width:94%"></i></div>
+          </div>
+          <div class="code mono"><span class="c">// before: DispatchGroup + callbacks</span>
+<br><span class="c">// after:</span>
+<br><span class="k">actor</span> <span class="t">FlightSync</span> {
+<br>&nbsp;&nbsp;<span class="k">func</span> <span class="f">refresh</span>() <span class="k">async throws</span> {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">try await</span> <span class="f">withThrowingTaskGroup</span>(...) { ... }
+<br>&nbsp;&nbsp;}
+<br>}</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Essentia -->
+    <article class="case reveal">
+      <div class="case-body">
+        <div class="case-meta"><span>Augmented Reality</span><span>•</span><span>Oct 2025 – Present</span><span>•</span><span>Remote, North Carolina</span></div>
+        <h3>AR measurement system for accurate real-world 3D measurement</h3>
+        <div class="co">Essentia, Inc. · Lead iOS Developer</div>
+        <p>I lead iOS development of <b>D8Acapture</b>, a field data app that utility crews use to record pole locations, photos, height, material and condition. I own it end to end, from concept to App Store release, including the app architecture and release pipeline.</p>
+        <ul>
+          <li>Built an AR measurement system combining <b>ARKit, SceneKit, CoreMotion and CoreLocation</b>.</li>
+          <li>Backed it with a custom <b>AVFoundation camera pipeline</b> for accurate 3D measurement.</li>
+          <li>Architected the app on SwiftUI + UIKit with MVVM and Clean Architecture.</li>
+          <li>Embedded AI-assisted development (Copilot, Claude, Cursor) into code generation, refactoring and PR review.</li>
+        </ul>
+        <div class="chips">
+          <span class="chip">ARKit</span><span class="chip">SceneKit</span><span class="chip">AVFoundation</span><span class="chip">CoreMotion</span><span class="chip">CoreLocation</span><span class="chip">Clean Architecture</span>
+        </div>
+        <div class="store-label">Live on the App Store</div>
+        <div class="store-row"><a class="store-btn" href="https://apps.apple.com/app/id6451448439" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.4-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.9-.91.04-2.01.61-2.66 1.37-.58.67-1.1 1.76-.96 2.8 1.01.08 2.05-.52 2.68-1.27z"/></svg><span><small>App Store</small>D8Acapture</span></a></div>
+      </div>
+      <div class="case-visual">
+        <div class="ar-scene">
+          <div class="phone">
+            <div class="grid-floor"></div>
+            <div class="measure-lbl">1.84 m</div>
+            <div class="measure"></div>
+            <div class="reticle"></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CUBYCODE -->
+    <article class="case reveal">
+      <div class="case-body">
+        <div class="case-meta"><span>Product &amp; Delivery</span><span>•</span><span>May 2020 – May 2022</span><span>•</span><span>Remote, Romania</span></div>
+        <h3>Managing a portfolio of 100+ iOS products</h3>
+        <div class="co">CUBYCODE · Project Manager &amp; iOS Developer</div>
+        <p>A combined engineering and delivery role for a large catalogue of iOS app products sold on CodeCanyon.</p>
+        <ul>
+          <li>Managed <b>100+ iOS app products</b> and raised stakeholder satisfaction by <b>15%</b> through proactive release planning and communication.</li>
+          <li>Mentored junior developers in iOS best practices, code review and Agile delivery.</li>
+        </ul>
+        <div class="chips">
+          <span class="chip">Release planning</span><span class="chip">Mentoring</span><span class="chip">Code review</span><span class="chip">Agile/Scrum</span>
+        </div>
+      </div>
+      <div class="case-visual">
+        <div class="tiles" id="tiles" aria-hidden="true"></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- APPS -->
+<section id="apps" style="background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+  <div class="wrap">
+    <div class="eyebrow">// Independent projects</div>
+    <h2>Apps I designed, built and published</h2>
+    <p class="sub">Shipped to the App Store on my own, outside full-time work. Source code on <a href="https://github.com/umar5009" target="_blank" rel="noopener" style="color:var(--cyan)">GitHub</a>.</p>
+    <div class="apps">
+      <div class="app reveal">
+        <div class="app-icon" style="background:linear-gradient(135deg,#f97316,#ec4899)">LB</div>
+        <h4>LettersBlast</h4>
+        <div class="kind">Word puzzle game</div>
+      </div>
+      <div class="app reveal">
+        <div class="app-icon" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)">OL</div>
+        <h4>Optic Lingo</h4>
+        <div class="kind">Camera-based translation app</div>
+      </div>
+      <div class="app reveal">
+        <div class="app-icon" style="background:linear-gradient(135deg,#8b5cf6,#6366f1)">NA</div>
+        <h4>NexternAI</h4>
+        <div class="kind">AI interview coach</div>
+      </div>
+      <div class="app reveal">
+        <div class="app-icon" style="background:linear-gradient(135deg,#10b981,#0ea5e9)">KH</div>
+        <h4>KnightHop</h4>
+        <div class="kind">Arcade game</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow">// Expertise</div>
+    <h2>What I work with</h2>
+    <p class="sub">A native-first toolkit, with a strong focus on clean architecture, security and reliable release processes.</p>
+    <div class="skills">
+      <div class="skill-card reveal">
+        <h4><span class="ic">{ }</span>Languages</h4>
+        <div class="chips"><span class="chip">Swift</span><span class="chip">Java (Android)</span><span class="chip">Python</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h4><span class="ic"></span>iOS Frameworks</h4>
+        <div class="chips"><span class="chip">SwiftUI</span><span class="chip">UIKit</span><span class="chip">Swift Concurrency</span><span class="chip">Combine</span><span class="chip">RxSwift</span><span class="chip">ARKit</span><span class="chip">SceneKit</span><span class="chip">AVFoundation</span><span class="chip">CoreLocation</span><span class="chip">CoreMotion</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h4><span class="ic">◇</span>Architecture &amp; Data</h4>
+        <div class="chips"><span class="chip">MVVM</span><span class="chip">Clean Architecture</span><span class="chip">REST APIs</span><span class="chip">WebSockets</span><span class="chip">Realm</span><span class="chip">Firebase</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h4><span class="ic">✓</span>Quality &amp; Security</h4>
+        <div class="chips"><span class="chip">XCTest</span><span class="chip">Code review</span><span class="chip">OWASP Mobile</span><span class="chip">Crash monitoring</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h4><span class="ic">↗</span>Delivery</h4>
+        <div class="chips"><span class="chip">Xcode</span><span class="chip">Git</span><span class="chip">Fastlane</span><span class="chip">Jenkins</span><span class="chip">CI/CD</span><span class="chip">TestFlight</span><span class="chip">App Store Connect</span><span class="chip">Agile/Scrum</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h4><span class="ic">✦</span>AI-Assisted Development</h4>
+        <div class="chips"><span class="chip">GitHub Copilot</span><span class="chip">Claude</span><span class="chip">Cursor</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="padding-top: 20px;">
+  <div class="wrap">
+    <div class="eyebrow">// Career</div>
+    <h2>10 years in mobile</h2>
+    <p class="sub">From Android in Pakistan to leading iOS for teams in the USA and Austria. The full story, role by role.</p>
+    <div class="timeline">
+      <div class="job reveal">
+        <div class="job-head"><h4>Lead iOS Developer</h4><span class="when">Oct 2025 – Present</span></div>
+        <div class="where">Essentia, Inc. · Remote (North Carolina, USA)</div>
+        <ul>
+          <li>Lead end-to-end iOS development from concept to App Store release, owning the app architecture (SwiftUI, UIKit, MVVM, Clean Architecture) and the release pipeline.</li>
+          <li>Built an AR measurement system with ARKit, SceneKit, CoreMotion and CoreLocation, backed by a custom AVFoundation camera pipeline for accurate real-world 3D measurement.</li>
+          <li>Embedded AI-assisted development (GitHub Copilot, Claude, Cursor) into daily code generation, refactoring and pull-request review.</li>
+        </ul>
+        <div class="chips job-chips"><span class="chip">SwiftUI</span><span class="chip">UIKit</span><span class="chip">MVVM</span><span class="chip">Clean Architecture</span><span class="chip">ARKit</span><span class="chip">SceneKit</span><span class="chip">AVFoundation</span><span class="chip">CoreMotion</span><span class="chip">CoreLocation</span></div>
+        <div class="store-row"><a class="store-btn" href="https://apps.apple.com/app/id6451448439" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.4-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.9-.91.04-2.01.61-2.66 1.37-.58.67-1.1 1.76-.96 2.8 1.01.08 2.05-.52 2.68-1.27z"/></svg><span><small>App Store</small>D8Acapture</span></a></div>
+      </div>
+      <div class="job reveal">
+        <div class="job-head"><h4>iOS Developer</h4><span class="when">May 2022 – Oct 2025</span></div>
+        <div class="where">FL3XX GmbH · Remote (Vienna, Austria)</div>
+        <p class="ctx">Aviation operations software; four live App Store products used by business-aviation pilots and crew.</p>
+        <ul>
+          <li>Cut crash rate by 99%, grew active pilot users by ~5,000 and lifted the App Store rating from 3.4 to 4.7 by migrating the legacy codebase to Swift 6 and replacing DispatchGroup and callback-based networking with structured concurrency (async/await, TaskGroup, actors).</li>
+          <li>Owned weekly releases, hotfixes, pull-request reviews and release-candidate merges across four concurrent App Store products.</li>
+          <li>Applied OWASP Mobile security standards across all four apps to meet the security requirements of enterprise aviation customers.</li>
+          <li>Built real-time features using WebSockets, Realm, Combine, RxSwift and SwiftUI on an MVVM architecture.</li>
+          <li>Partnered with backend, QA, product and support teams to ship features; triaged customer-reported bugs and resolved support escalations via Slack.</li>
+          <li>Used GitHub Copilot and Claude to accelerate the Swift 6 migration, unit-test generation and code review.</li>
+          <li>Recognised as Employee of the Month three times.</li>
+        </ul>
+        <div class="chips job-chips"><span class="chip">Swift 6</span><span class="chip">async/await</span><span class="chip">TaskGroup</span><span class="chip">Actors</span><span class="chip">SwiftUI</span><span class="chip">Combine</span><span class="chip">RxSwift</span><span class="chip">WebSockets</span><span class="chip">Realm</span><span class="chip">MVVM</span><span class="chip">OWASP Mobile</span></div>
+        <div class="store-row"><a class="store-btn" href="https://apps.apple.com/app/id1294440991" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.4-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.9-.91.04-2.01.61-2.66 1.37-.58.67-1.1 1.76-.96 2.8 1.01.08 2.05-.52 2.68-1.27z"/></svg><span><small>App Store</small>FL3XX Crew</span></a><a class="store-btn" href="https://apps.apple.com/app/id1448298657" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.4-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.9-.91.04-2.01.61-2.66 1.37-.58.67-1.1 1.76-.96 2.8 1.01.08 2.05-.52 2.68-1.27z"/></svg><span><small>App Store</small>Dispatch</span></a><a class="store-btn" href="https://apps.apple.com/app/id1261787786" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.4-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.9-.91.04-2.01.61-2.66 1.37-.58.67-1.1 1.76-.96 2.8 1.01.08 2.05-.52 2.68-1.27z"/></svg><span><small>App Store</small>Owner</span></a><a class="store-btn" href="https://apps.apple.com/app/id492516229" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.4-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.9-.91.04-2.01.61-2.66 1.37-.58.67-1.1 1.76-.96 2.8 1.01.08 2.05-.52 2.68-1.27z"/></svg><span><small>App Store</small>Sales</span></a></div>
+      </div>
+      <div class="job reveal">
+        <div class="job-head"><h4>Project Manager &amp; iOS Developer</h4><span class="when">May 2020 – May 2022</span></div>
+        <div class="where">CUBYCODE · Remote (Romania)</div>
+        <ul>
+          <li>Managed a portfolio of 100+ iOS app products sold on CodeCanyon, raising stakeholder satisfaction by 15% through proactive release planning and communication.</li>
+          <li>Mentored junior developers in iOS best practices, code review and Agile delivery.</li>
+        </ul>
+        <div class="chips job-chips"><span class="chip">Release planning</span><span class="chip">Mentoring</span><span class="chip">Code review</span><span class="chip">Agile/Scrum</span></div>
+      </div>
+      <div class="job reveal">
+        <div class="job-head"><h4>iOS Developer</h4><span class="when">Apr 2019 – May 2020</span></div>
+        <div class="where">ROZEE.PK · Lahore, Pakistan</div>
+        <ul>
+          <li>Built core features for the Easy Tickets booking app (movies, buses, live events) in Swift and UIKit.</li>
+          <li>Improved delivery efficiency by 20% by writing structured test scenarios and resolving critical production bugs.</li>
+        </ul>
+        <div class="chips job-chips"><span class="chip">Swift</span><span class="chip">UIKit</span><span class="chip">Test scenarios</span></div>
+        <div class="store-row"><a class="store-btn" href="https://apps.apple.com/app/id1044591431" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.4-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.9-.91.04-2.01.61-2.66 1.37-.58.67-1.1 1.76-.96 2.8 1.01.08 2.05-.52 2.68-1.27z"/></svg><span><small>App Store</small>EasyTickets</span></a></div>
+      </div>
+      <div class="job reveal">
+        <div class="job-head"><h4>iOS Developer</h4><span class="when">Mar 2018 – Apr 2019</span></div>
+        <div class="where">Amir and Al Almeri Technological Project Management LLC · Ajman, UAE</div>
+        <ul>
+          <li>Designed, built and shipped the Smart Garage Management iOS app from scratch.</li>
+          <li>Owned App Store submissions end to end, including metadata, TestFlight builds and Apple review responses.</li>
+        </ul>
+        <div class="chips job-chips"><span class="chip">Swift</span><span class="chip">TestFlight</span><span class="chip">App Store Connect</span></div>
+      </div>
+      <div class="job reveal" style="padding-bottom:0">
+        <div class="job-head"><h4>Android Developer</h4><span class="when">Jan 2016 – Feb 2018</span></div>
+        <div class="where">Sprint Solutions (Pvt) Ltd · Gujranwala, Pakistan</div>
+        <ul>
+          <li>Maintained and extended 10 Android apps in real-time, medical and travel domains, increasing user engagement by 20%.</li>
+        </ul>
+        <div class="chips job-chips"><span class="chip">Java</span><span class="chip">Android</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOMMENDATION -->
+<section id="recommendation" style="padding-top: 20px;">
+  <div class="wrap">
+    <div class="eyebrow">// Recommendation</div>
+    <h2>What my manager says</h2>
+    <p class="sub">A recommendation from the leader who managed me directly at Essentia, Inc., where I worked on the D8Acapture platform.</p>
+    <figure class="rec reveal">
+      <blockquote class="rec-quote">
+        <p>I had the pleasure of working with Umar for over a year, during which he played a significant role in improving the quality and capabilities of our <mark>D8Acapture</mark> platform.</p>
+        <p>One of Umar's greatest strengths is his ability to work independently, take ownership of complex challenges, and deliver high-quality solutions with minimal oversight. He consistently went beyond assigned tasks, proactively identifying opportunities for improvement and bringing forward new ideas and initiatives that added real value to the product.</p>
+        <p>His technical expertise in iOS development, combined with his willingness to explore and implement AI-integrated features, made a meaningful impact on our development efforts. Umar doesn't just execute requirements; he thinks critically about the product, challenges existing approaches, and looks for ways to make things better.</p>
+        <p>I truly appreciated his initiative, reliability, and commitment to delivering quality work. I would highly recommend Umar to any organization looking for a talented, forward-thinking engineer who can take ownership and make an immediate impact.</p>
+      </blockquote>
+      <figcaption class="rec-author">
+        <div class="rec-avatar">ZR</div>
+        <div>
+          <b>Zachary Raboin</b>
+          <span>Product &amp; Technology Leader · B2B SaaS Product Strategy · Technical Product Management · AI &amp; Integrations</span>
+          <span class="rec-meta">October 8, 2026 · Managed Umar directly at Essentia, Inc.</span>
+        </div>
+        <a class="link-pill rec-link" href="https://www.linkedin.com/in/umar-muzaffar-2843b3158/details/recommendations/" target="_blank" rel="noopener">View on LinkedIn</a>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section style="padding-top: 20px;">
+  <div class="wrap two">
+    <div class="info-card reveal">
+      <h4>Education</h4>
+      <div class="info-item"><b>MS, Computer Science</b><span>FAST-NUCES, Lahore · 2014 – 2018 · Completed part-time alongside full-time work</span></div>
+      <div class="info-item"><b>BS, Information Technology</b><span>University of Gujrat · 2010 – 2014</span></div>
+    </div>
+    <div class="info-card reveal">
+      <h4>Conferences &amp; Publications</h4>
+      <div class="info-item"><b>WFAR 2016, University of Kaiserslautern, Germany</b><span>Presented an agriculture IoT project (Python, OpenCV) · DAAD-sponsored</span></div>
+      <div class="info-item"><b>Springer, 2014</b><span>Research paper on improving healthcare delivery in rural Pakistan</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding-top: 20px;">
+  <div class="wrap">
+    <div class="contact reveal">
+      <div class="eyebrow">// Let's talk</div>
+      <h2>Building something on iOS?</h2>
+      <p class="sub">I'm open to Lead and Senior iOS roles, remote or with relocation. English C1 (IELTS).</p>
+      <a href="mailto:umar.ch087@gmail.com" class="btn btn-primary">umar.ch087@gmail.com</a>
+      <div class="links">
+        <a class="link-pill" href="https://www.linkedin.com/in/umar-muzaffar-2843b3158" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+        <a class="link-pill" href="https://github.com/umar5009" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2c-3.34.72-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .3"/></svg>
+          GitHub
+        </a>
+        <span class="link-pill">📍 Lahore, Pakistan · Open to relocation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="yr">2026</span> Umar Muzaffar · Built with care, like my apps.
+</footer>
+
+<script>
+  // Portfolio tiles for the CUBYCODE visual
+  (function () {
+    var t = document.getElementById('tiles');
+    var g = ['#5ee7f7','#6e8bff','#a46bf5','#f97316','#ec4899','#10b981','#3b82f6','#8b5cf6','#06b6d4','#f59e0b'];
+    for (var i = 0; i < 25; i++) {
+      var d = document.createElement('div');
+      d.className = 'tile';
+      var a = g[i % g.length], b = g[(i * 3 + 2) % g.length];
+      d.style.background = 'linear-gradient(135deg,' + a + ',' + b + ')';
+      d.style.opacity = (0.35 + ((i * 37) % 60) / 100).toFixed(2);
+      t.appendChild(d);
+    }
+  })();
+
+  // Reveal on scroll
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
